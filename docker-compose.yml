@@ -21,10 +21,14 @@ services:
     volumes:
       - ./backups:/var/www/html/storage/backups
       - ./templates:/var/www/html/templates # Craft CMS template files
+      - ./modules:/var/www/html/modules # Craft modules directory
+      - ./config/element-api.php:/var/www/html/config/element-api.php # Element API file - we require the plugin below
     environment:
       DEPENDENCIES: >- # additional composer packages (must be comma separated)
         yiisoft/yii2-redis,
         craftcms/redactor,
+        craftcms/element-api,
+        nystudio107/craft-seomatic
 
       CRAFTCMS_EMAIL: training@mijngo.com
       CRAFTCMS_USERNAME: admin
